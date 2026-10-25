@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Offset — AC Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content-page">
+        <a href="index.html" class="back-link">&larr; Back to Help Center</a>
+        <h1>Crop Offset</h1>
+        <p><strong>Purpose:</strong> Configure annotation crop offsets on one or many views, and bulk export/import those values through Excel.</p>
+
+        <h2>When to Use</h2>
+        <p>Use this when annotation (tags, dimensions, text) is being clipped by the view crop, or when you need to standardize the annotation‑to‑crop distance across many sheets before printing or issuing drawings.</p>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>Views must support annotation crop (Floor Plans, Ceiling Plans, Elevations, Sections — <em>not</em> 3D, Legends, Schedules, Sheets).</li>
+            <li>For <strong>Export</strong>/<strong>Import</strong>, Microsoft Excel must be installed on the machine (uses Excel Interop).</li>
+        </ul>
+
+        <h2>The Dialog</h2>
+        <p>The Crop Offset window offers three actions:</p>
+        <ul>
+            <li><strong>Set Annotation Offsets</strong> — apply Left / Right / Top / Bottom values (in mm) to the currently selected views (or the active view if nothing is selected).</li>
+            <li><strong>Export ALL Views to Excel</strong> — write every annotation‑capable view in the project to an .xlsx file.</li>
+            <li><strong>Import ALL Views from Excel</strong> — read the edited .xlsx back and apply offsets to every matching view.</li>
+        </ul>
+
+        <h2>Step-by-Step — Apply to Selected Views</h2>
+        <ol>
+            <li>Select one or more views in the Project Browser (Ctrl+click for multiple).</li>
+            <li>Click <strong>Crop Offset</strong> on the AC Tools ribbon.</li>
+            <li>Set the four offset values (default 3 mm). Positive values only.</li>
+            <li>Click <strong>Set Annotation Offsets</strong>.</li>
+            <li>Click <strong>Apply</strong>. A confirmation dialog reports how many views were updated.</li>
+        </ol>
+
+        <h2>Step-by-Step — Bulk Export / Import</h2>
+        <ol>
+            <li>Click <strong>Export ALL Views to Excel</strong> → choose a save location.</li>
+            <li>The workbook contains columns: <em>View ID, View Name, View Type, Left (mm), Right (mm), Top (mm), Bottom (mm)</em>, plus a summary sheet.</li>
+            <li>Edit the offset values in Excel (do <strong>not</strong> rename columns or delete rows), save, and close Excel.</li>
+            <li>Click <strong>Import ALL Views from Excel</strong> and select the same file.</li>
+            <li>Confirm the warning dialog. The import runs in a single transaction.</li>
+            <li>A results dialog shows succeeded / skipped / failed views.</li>
+        </ol>
+
+        <h2>Expected Output</h2>
+        <ul>
+            <li>Crop Box and Annotation Crop are enabled on each affected view.</li>
+            <li>Offset values are applied in feet internally (mm × 0.00328084).</li>
+            <li>Excel export produces one row per view, colour‑coded and auto‑fitted.</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li><strong>"Does not support annotation crop"</strong> — the view is a 3D, Legend, Schedule, or Sheet. Excluded by design.</li>
+            <li><strong>Import silently skips a view</strong> — its ID no longer exists (view deleted). Match by Name will be attempted as a fallback.</li>
+            <li><strong>Excel Interop errors</strong> — ensure Excel is installed and not blocked by a pending "recover document" dialog.</li>
+        </ul>
+
+        <h2>Precautions</h2>
+        <p>Import overwrites every listed view's annotation crop values. <strong>Save a backup of the project before running Import</strong>. Excel must be closed before import, otherwise the file may lock.</p>
+    </div>
+</body>
+</html>
