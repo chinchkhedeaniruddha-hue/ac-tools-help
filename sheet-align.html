@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sheet Align — AC Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content-page">
+        <a href="index.html" class="back-link">&larr; Back to Help Center</a>
+        <h1>Sheet Align</h1>
+        <p><strong>Purpose:</strong> Align viewports across multiple sheets to match the layout of a chosen "main" template sheet.</p>
+
+        <h2>When to Use</h2>
+        <p>Use this when you have a batch of sheets that should all look identical to a reference sheet (same viewport position, same label placement), but were placed at slightly different positions.</p>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>At least <strong>two sheets</strong> in the project (one to serve as the main template, at least one to align).</li>
+            <li>Sheets should already contain viewports — Sheet Align does not add viewports.</li>
+        </ul>
+
+        <h2>Step-by-Step</h2>
+        <ol>
+            <li>Click <strong>Sheet Align</strong> on the AC Tools ribbon.</li>
+            <li>In the sheet list, click the radio button next to the sheet you want to use as the <strong>main template</strong>.</li>
+            <li>Ctrl+click to select one or more <strong>other sheets</strong> to align.</li>
+            <li><strong>Align viewport labels</strong> (on by default) — also copies viewport label offsets from the main sheet.</li>
+            <li><strong>Match by view name</strong> (on by default) — matches viewports on target sheets to the same view name on the main sheet. Turn off to fall back to first‑viewport matching.</li>
+            <li>Click <strong>ALIGN VIEWPORTS</strong>.</li>
+            <li>A completion dialog reports how many viewports were aligned across how many sheets.</li>
+        </ol>
+
+        <h2>Expected Output</h2>
+        <ul>
+            <li>Each target sheet's viewports move so their centre point matches the corresponding viewport on the main sheet.</li>
+            <li>If <em>Align labels</em> is enabled, label offsets are also matched.</li>
+            <li>Every target sheet is processed in its own transaction — one failure does not block others.</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li><strong>"Please select a main sheet"</strong> — no radio button was selected. Click the radio next to any sheet.</li>
+            <li><strong>"Please select at least one other sheet"</strong> — Ctrl+click target sheets in the list.</li>
+            <li><strong>Viewport not aligned</strong> — the target sheet may lack a viewport with the same view name. Disable <em>Match by view name</em> and re‑run.</li>
+        </ul>
+
+        <h2>Precautions</h2>
+        <p>This modifies viewport positions on the target sheets. Save the project first if you want a clean rollback point — multi‑sheet transactions cannot all be undone with a single Ctrl+Z.</p>
+    </div>
+</body>
+</html>

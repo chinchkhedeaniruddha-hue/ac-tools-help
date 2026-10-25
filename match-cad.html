@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match CAD — AC Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content-page">
+        <a href="index.html" class="back-link">&larr; Back to Help Center</a>
+        <h1>Match CAD</h1>
+        <p><strong>Purpose:</strong> Copy CAD layer overrides (visibility, colour, line weight, halftone, line pattern, etc.) from one source view template to multiple target templates — in one operation.</p>
+
+        <h2>When to Use</h2>
+        <p>Use this when you already have a "master" view template with correct CAD layer settings and need to propagate the same settings to other templates without manual Visibility/Graphics edits.</p>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>At least <strong>two view templates</strong> in the project.</li>
+            <li>At least <strong>one CAD link or CAD import</strong> must exist in the project. If none is present, the tool shows a 3‑step instructional popup instead of the main window.</li>
+        </ul>
+
+        <h2>What to Do If No CAD is Found</h2>
+        <p>The tool shows an informational dialog:</p>
+        <ol>
+            <li><strong>Link the CAD file</strong> — Insert → Link CAD.</li>
+            <li><strong>Set the CAD overrides in one view template</strong> — Visibility/Graphics → Imported Categories → set layer colours, line weights, etc.</li>
+            <li><strong>Re‑run this tool</strong> — it will now detect the CAD and open the transfer window.</li>
+        </ol>
+
+        <h2>Step-by-Step</h2>
+        <ol>
+            <li>Click <strong>Match CAD</strong> on the AC Tools ribbon.</li>
+            <li><strong>Source View Template</strong> (left) — select the template that already has the correct CAD settings.</li>
+            <li><strong>Target View Templates</strong> (right) — click <strong>Select All</strong> or Ctrl+click individual targets.</li>
+            <li><strong>CAD Imports &amp; Layers</strong> (bottom tree) — expand a CAD import and tick the layers you want to copy. Use the checkboxes at the import level to include all its layers. Use <strong>Inverse</strong> to flip the selection, or type in the <strong>Search</strong> box to filter.</li>
+            <li>Click <strong>Copy CAD Layer Overrides</strong>.</li>
+            <li>Review the summary dialog after the transfer completes.</li>
+        </ol>
+
+        <h2>Expected Output</h2>
+        <ul>
+            <li>For every (target template × selected layer) pair, the target's category override is replaced by the source template's override.</li>
+            <li>A summary reports <em>Copied N overrides to M target templates</em>.</li>
+            <li>Any per‑layer failure is logged and reported without aborting the whole run.</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li><strong>"At least 2 view templates are required"</strong> — create a second template in the View Templates dialog.</li>
+            <li><strong>CAD layers not showing in the tree</strong> — the CAD link/import may be corrupt or Revit hasn't loaded its categories yet; reload the CAD and re‑run.</li>
+            <li><strong>Some layers skipped</strong> — some imported categories are read‑only in certain templates. Check the Output window for details.</li>
+        </ul>
+
+        <h2>Precautions</h2>
+        <p>This tool <strong>overwrites</strong> existing CAD layer overrides on the target templates. Duplicate target templates first if you want to preserve old settings.</p>
+    </div>
+</body>
+</html>

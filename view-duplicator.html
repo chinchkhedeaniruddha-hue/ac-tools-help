@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sheet Tool (View Duplicator) — AC Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content-page">
+        <a href="index.html" class="back-link">&larr; Back to Help Center</a>
+        <h1>Sheet Tool (View Duplicator)</h1>
+        <p><strong>Purpose:</strong> Duplicates selected views across multiple scope boxes and optionally creates sheets with viewports already placed.</p>
+
+        <h2>When to Use</h2>
+        <p>Use this tool when you need to produce the same plan, section, elevation, or 3D view multiple times — once per building area (scope box) — with consistent naming and optional sheets.</p>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>The project must contain at least <strong>one Scope Box</strong>. If none exist, the tool shows a warning and stops.</li>
+            <li>At least one printable view (Floor Plan, Ceiling Plan, Elevation, Section, or 3D) must exist.</li>
+            <li>If creating sheets: at least one Title Block family must be loaded and activated.</li>
+        </ul>
+
+        <h2>Step-by-Step</h2>
+        <ol>
+            <li>Click <strong>Sheet Tool</strong> on the AC Tools ribbon (View Management panel).</li>
+            <li><strong>Select views:</strong> choose a view from the dropdown, click <strong>Add View</strong>. Repeat for every view you want to duplicate.</li>
+            <li>For each view, enter a <strong>Starting Sheet Number</strong> in the table (only required if creating sheets).</li>
+            <li><strong>Select scope boxes:</strong> pick from the left list, click <strong>&darr;</strong> to add. Use <strong>Add All</strong> to add every scope box.</li>
+            <li><strong>Naming options (optional):</strong> set Prefix, Suffix, Find, and Replace. Final view name = <code>{Prefix}{ProcessedViewName}{Suffix} - {ScopeBoxName}</code>.</li>
+            <li><strong>Title Block (only if creating sheets):</strong> choose from the dropdown, then click <strong>Set Viewport Position</strong> and drag a rectangle on the title‑block preview to define where viewports land.</li>
+            <li>Tick <strong>Create sheets for new views</strong> if you want sheets generated automatically.</li>
+            <li>Click <strong>Create Views</strong>. A confirmation dialog appears — review the totals and click <strong>Yes</strong>.</li>
+        </ol>
+
+        <h2>Expected Output</h2>
+        <ul>
+            <li>N dependent views, where N = (selected views) × (selected scope boxes).</li>
+            <li>If <em>Create Sheets</em> was on: N new sheets, each with the corresponding view placed at the configured viewport position.</li>
+            <li>Sheet numbers increment from the entered starting number per view (e.g. A101, A102, A103…).</li>
+        </ul>
+
+        <h2>Warnings & Common Errors</h2>
+        <ul>
+            <li><strong>"Kindly create a scope box first"</strong> — no scope boxes in project. Create one from Architecture/Structure tab → Scope Box.</li>
+            <li><strong>"Please enter a starting sheet number"</strong> — sheet creation is enabled but a row has no number.</li>
+            <li><strong>"Failed to create N view(s)"</strong> — some views can't be duplicated (templates, browsers). Check the summary dialog.</li>
+            <li>Duplicate names are auto-resolved with a <code>(1)</code>, <code>(2)</code> suffix.</li>
+        </ul>
+
+        <h2>Precautions</h2>
+        <p>This tool modifies the model (creates views and sheets). Close any unsaved drawings first. To roll back, use Revit's <strong>Undo</strong> (Ctrl+Z) — everything happens in a single transaction.</p>
+    </div>
+</body>
+</html>
